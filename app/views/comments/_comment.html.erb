@@ -1,0 +1,14 @@
+<div class="p-comment__item">
+  <p><%= simple_format(comment.comment) %></p>
+  <div class="p-comment__bottomLine">
+    <span><%= comment.name %></span>
+    <span><%= comment.created_at.to_formatted_s(:default_jp) %></span>
+    <span>
+      <%= button_to '削除',
+      comment_path(comment),
+      method: :delete,
+      form: { data: { turbo_confirm: '本当に削除しますか？' } },
+      class: 'btn btn-danger btn-sm' %>
+    </span>
+  </div>
+</div>
