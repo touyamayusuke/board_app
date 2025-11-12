@@ -1,23 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-  <div class="container-fluid">
+  <div class="container">
     <%= link_to 'BoardApp', root_path, class: 'navbar-brand fw-bold' %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="mainNavbar">
+    <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <%= header_link_item('Home', root_path) %>
-        <%= header_link_item('Boards', boards_path) %>
+        <%= header_link_item('ホーム', root_path) %>
+        <%= header_link_item('掲示板一覧', boards_path) %>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navToolsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            More
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            ユーザー
           </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navToolsDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else</a></li>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+            <% if @current_user %>
+              <li><%= link_to 'マイページ', mypage_path, class: 'dropdown-item' %></li>
+              <li><%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' }, class: 'dropdown-item' %></li>
+            <% else %>
+              <li><%= link_to '登録', new_user_path, class: 'dropdown-item' %></li>
+              <li><%= link_to 'ログイン', root_path, class: 'dropdown-item' %></li>
+            <% end %>
           </ul>
         </li>
       </ul>

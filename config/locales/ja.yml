@@ -1,6 +1,10 @@
 ja:
   activerecord:
     attributes:
+      user:
+        name: "ユーザー名"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
       board:
         author_name: "投稿者名"
         title: "タイトル"
