@@ -38,7 +38,7 @@ gem "bootsnap", require: false
 
 gem "bootstrap", "~> 5.3.0"
 gem "sassc-rails", "~> 2.1"
-gem "mini_racer", "0.8.0"
+gem "mini_racer", "0.19.1"
 gem "kaminari"
 gem "rails-i18n", "~> 7.0.5"
 gem "annotate"
